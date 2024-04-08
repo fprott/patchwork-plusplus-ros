@@ -23,8 +23,8 @@ def generate_launch_description():
             name='ground_segmentation',
             output='screen',
             parameters=[
-                {'cloud_topic': '/points'}, # Input pointcloud
-                {'frame_id': 'laser_data_frame'},
+                {'cloud_topic': '/kitti/velo'}, # Input pointcloud; changed from points to fit converter https://github.com/tomas789/kitti2bag
+                {'frame_id': 'velo_link'}, #changed from laser_data_frame to fit converter https://github.com/tomas789/kitti2bag
                 {'sensor_height': 1.88},
                 {'num_iter': 3},             # Number of iterations for ground plane estimation using PCA.
                 {'num_lpr': 20},             # Maximum number of points to be selected as lowest points representative.
