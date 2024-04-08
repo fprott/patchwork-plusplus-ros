@@ -31,14 +31,19 @@ $ colcon build --packages-select patchworkpp --symlink-install
 ```
 
 ## :runner: To run the demo codes
-There is a demo which executes Patchwork++ with sample rosbag file. You can download a sample file with the following command.
->  download Kitti dataset for ros2 [kittiRos2link]: https://github.com/umtclskn/ros2_kitti_publishers/tree/main
+There is a demo which executes Patchwork++ but there is **no** sample rosbag file for ROS 2. You can download a the raw data set and use a converter.
+
+You will find the [raw data set here](https://www.cvlibs.net/datasets/kitti/raw_data.php) (use the synced+rectified data, you may need the calibration deppending on your use case).
+
+Now we need to [use a converter](https://github.com/tomas789/kitti2bag) to create the ROS 2 bag. 
+
+The convert will output the lidar data by default under the topic ```/kitti/velo``` using the frame ```velo_link```. Change the ```demo.launch.py``` file accordingly. 
 
 Then, you can run demo as follows.
 ```bash
-# Start Patchwork++
-$ ros2 launch patchworkpp demo.launch
-# Start the bag file
+# Start Patchwork++ (make sure to adjust demo.launch.py to fit with your bag)
+$ ros2 launch patchworkpp demo.launch.py
+# Start the bag file (change the name to fit the file you downloaded)
 $ ros2 bag play kitti_00_sample.db3
 ```
 
